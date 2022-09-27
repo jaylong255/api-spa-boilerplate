@@ -1,0 +1,21 @@
+version: "3.5"
+services:
+
+  spa:
+    container_name: spa
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: spa
+    working_dir: /app
+    volumes:
+      - ./:/app
+    networks:
+      - myappyo
+    ports:
+      - 8080:8080
+    restart: unless-stopped
+
+networks:
+  myappyo:
+    driver: bridge
