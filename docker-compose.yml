@@ -9,12 +9,27 @@ services:
       target: spa
     working_dir: /app
     volumes:
-      - ./:/app
+      - ./spa:/app
     networks:
       - myappyo
     ports:
       - 8080:8080
     restart: unless-stopped
+
+  worker:
+    container_name: worker
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      target: worker
+    working_dir: /app
+    volumes:
+      - ./api:/app
+    networks:
+      - myappyo
+    # ports:
+    #   - 8080:8080
+    # restart: unless-stopped
 
 networks:
   myappyo:
