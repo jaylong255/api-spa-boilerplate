@@ -1,4 +1,4 @@
-# myappyo
+# app
 
 ## Project setup
 ```
